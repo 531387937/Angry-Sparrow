@@ -20,7 +20,7 @@ public class Fire : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         Pos = ca.WorldToScreenPoint(transform.position);
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0)&&!Fired)
         {
             FireDir = (-Input.mousePosition + Pos).normalized;
             FireForce = Vector3.Distance(Input.mousePosition, Pos) * ForceRise;
@@ -29,7 +29,7 @@ public class Fire : MonoBehaviour {
                 FireForce = ForceMax;
             }
         }
-        if(Input.GetMouseButtonUp(0))
+        if(Input.GetMouseButtonUp(0)&&!Fired)
         {
             rig.AddForce(new Vector2(FireDir.x, FireDir.y) * FireForce);
             Fired = true;

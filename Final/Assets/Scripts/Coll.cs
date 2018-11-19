@@ -35,8 +35,8 @@ public class Coll : MonoBehaviour {
         Hp = Hp - damage;
         if (Hp <= 0)
         {
-            if (collision.gameObject.tag == "bird")
-            { collision.gameObject.GetComponent<Rigidbody2D>().velocity=vel*0.75f; }
+            //if (collision.gameObject.tag == "bird")
+            //{ collision.gameObject.GetComponent<Rigidbody2D>().velocity=vel*0.75f; }
             Destroy(this.gameObject);
         }
     }
