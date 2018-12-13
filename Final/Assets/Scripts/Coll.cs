@@ -7,9 +7,10 @@ public class Coll : MonoBehaviour {
     public float Hp;
     private Vector2 vel;
     public SpriteRenderer Sp;
-	// Use this for initialization
-	void Start () {
-       
+    public BirdCtr BC;
+    // Use this for initialization
+    void Start () {
+        BC = GameObject.Find("Birds").GetComponent<BirdCtr>();
        
 	}
 	
@@ -37,6 +38,15 @@ public class Coll : MonoBehaviour {
         {
             //if (collision.gameObject.tag == "bird")
             //{ collision.gameObject.GetComponent<Rigidbody2D>().velocity=vel*0.75f; }
+            if(this.gameObject.tag=="Enemy")
+            {
+            BC.beaten++;
+                ScoreCtr.score += 5000;
+            }
+            else
+            {
+                ScoreCtr.score += 500;
+            }
             Destroy(this.gameObject);
         }
     }

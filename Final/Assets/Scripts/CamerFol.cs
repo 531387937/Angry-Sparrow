@@ -17,15 +17,35 @@ public class CamerFol : MonoBehaviour {
     public GameObject player1;
     public GameObject Player2;
 
-
+    public BirdCtr BC;
+    public int birdNum = 0;
+    private bool BirdAlive = true;
     private void Awake()
     {
-        // pppl= player1.GetComponent<PlayerSkill>();
         m_Camera = GetComponent<Camera>();
-        //player1 = GameObject.FindGameObjectWithTag("PLayer");
-        //Player2 = GameObject.FindGameObjectWithTag("sign");
     }
+    private void LateUpdate()
+    {
+        if(player1==null&& BC.birds[birdNum] != null)
+        {
+            player1 = BC.birds[birdNum];
+            Player2 = BC.birds[birdNum];
+            BC.birds[birdNum].GetComponent<Fire>().enabled = true;
+        }
+        if (BC.birds[birdNum] == null)
+        {
 
+            BirdAlive = false;
+        }
+        if (!BirdAlive)
+        {
+            birdNum++;
+            player1 = BC.birds[birdNum];
+            Player2 = BC.birds[birdNum];
+            BC.birds[birdNum].GetComponent<Fire>().enabled = true;
+            BirdAlive = true;
+        }
+    }
 
     private void FixedUpdate()
     {
@@ -36,6 +56,7 @@ public class CamerFol : MonoBehaviour {
 
         //}
         //else
+        
         {
 
             Move();

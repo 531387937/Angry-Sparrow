@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CamCtr : MonoBehaviour {
     private Camera ca;
+    
 	// Use this for initialization
 	void Start () {
         ca = GetComponent<Camera>();
